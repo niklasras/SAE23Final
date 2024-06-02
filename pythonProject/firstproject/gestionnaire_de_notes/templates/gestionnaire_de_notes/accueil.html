@@ -1,0 +1,40 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    <h2>Bienvenue sur le Gestionnaire de Notes</h2>
+    <p>Utilisez le menu pour naviguer à travers les différentes sections du site.</p>
+
+    <h2>Tableau des Notes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro Étudiant</th>
+                <th>Nom Étudiant</th>
+                <th>Prénom Étudiant</th>
+                <th>Enseignant</th>
+                <th>UE</th>
+                <th>Ressource</th>
+                <th>Examen</th>
+                <th>Note</th>
+                <th>Appréciation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for note in notes %}
+                <tr>
+                    <td>{{ note.etudiant.numero }}</td>
+                    <td>{{ note.etudiant.nom }}</td>
+                    <td>{{ note.etudiant.prenom }}</td>
+                    <td>{{ note.examen.ressource_ue.enseignant.nom }} {{ note.examen.ressource_ue.enseignant.prenom }}</td>
+                    <td>{{ note.examen.ressource_ue.ue.nom }}</td>
+                    <td>{{ note.examen.ressource_ue.nom }}</td>
+                    <td>{{ note.examen.titre }}</td>
+                    <td>{{ note.note }}</td>
+                    <td>{{ note.appreciation }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

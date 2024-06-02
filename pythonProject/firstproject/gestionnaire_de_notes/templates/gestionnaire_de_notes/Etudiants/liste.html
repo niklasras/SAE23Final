@@ -1,0 +1,37 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Liste des Étudiants{% endblock %}
+
+{% block content %}
+    <h2>Liste des Étudiants</h2>
+    <a href="{% url 'etudiant_create' %}">Ajouter un Étudiant</a>
+    <table>
+        <thead>
+            <tr>
+                <th>N° Étudiant</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Groupe</th>
+                <th>Email</th>
+                <th>Photo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for etudiant in etudiants %}
+                <tr>
+                    <td>{{ etudiant.numero }}</td>
+                    <td>{{ etudiant.nom }}</td>
+                    <td>{{ etudiant.prenom }}</td>
+                    <td>{{ etudiant.groupe }}</td>
+                    <td>{{ etudiant.email }}</td>
+                    <td><img src="{{ etudiant.photo.url }}" alt="Photo de {{ etudiant.nom }}" height="100"></td>
+                    <td>
+                        <a href="{% url 'etudiant_update' etudiant.pk %}">Modifier</a>
+                        <a href="{% url 'etudiant_delete' etudiant.pk %}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
