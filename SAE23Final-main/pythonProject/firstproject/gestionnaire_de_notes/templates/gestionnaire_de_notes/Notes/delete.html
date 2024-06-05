@@ -1,0 +1,13 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Supprimer une Note{% endblock %}
+
+{% block content %}
+    <h2>Supprimer une Note</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Êtes-vous sûr de vouloir supprimer la note de {{ note.etudiant.nom }} {{ note.etudiant.prenom }} pour l'examen {{ note.examen.titre }} ?</p>
+        <button type="submit">Supprimer</button>
+        <a href="{% url 'note_list' %}">Annuler</a>
+    </form>
+{% endblock %}

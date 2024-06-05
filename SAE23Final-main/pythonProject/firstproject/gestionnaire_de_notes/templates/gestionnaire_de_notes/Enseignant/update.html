@@ -1,0 +1,12 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Modifier un Enseignant{% endblock %}
+
+{% block content %}
+    <h2>Modifier un Enseignant</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Modifier</button>
+    </form>
+{% endblock %}

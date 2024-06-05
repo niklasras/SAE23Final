@@ -1,0 +1,12 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Modifier un Étudiant{% endblock %}
+
+{% block content %}
+    <h2>Modifier un Étudiant</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Modifier</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Liste des Examens{% endblock %}
+
+{% block content %}
+    <h2>Liste des Examens</h2>
+    <a href="{% url 'examen_create' %}">Ajouter un Examen</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Coefficient</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for examen in examens %}
+                <tr>
+                    <td>{{ examen.titre }}</td>
+                    <td>{{ examen.date }}</td>
+                    <td>{{ examen.coefficient }}</td>
+                    <td>
+                        <a href="{% url 'examen_update' examen.pk %}">Modifier</a>
+                        <a href="{% url 'examen_delete' examen.pk %}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
