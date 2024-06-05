@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Etudiant, UE, RessourceUE, Enseignant, Examen, Note
+from django.http import HttpResponse
 from .forms import EtudiantForm, UEForm, RessourceUEForm, EnseignantForm, ExamenForm, NoteForm
 
 def accueil(request):
@@ -7,6 +8,27 @@ def accueil(request):
     return render(request, 'gestionnaire_de_notes/accueil.html', {'notes': notes})
 
 # Etudiant views
+def generate_report_txt(request, etudiant_id):
+    etudiant = Etudiant.objects.get(pk=etudiant_id)
+    notes = Note.objects.filter(etudiant=etudiant)
+
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = f'attachment; filename="releve_notes_{etudiant.nom}_{etudiant.prenom}.txt"'
+
+    lines = [
+        f"Relevé de notes pour {etudiant.nom} {etudiant.prenom}\n",
+        f"N° Étudiant: {etudiant.numero}\n",
+        f"Groupe: {etudiant.groupe}\n",
+        f"Email: {etudiant.email}\n\n",
+        "Notes:\n"
+    ]
+
+    for note in notes:
+        lines.append(f"{note.examen.titre}: {note.note} ({note.appreciation})\n")
+
+    response.writelines(lines)
+    return response
+
 def etudiant_list(request):
     etudiants = Etudiant.objects.all()
     return render(request, 'gestionnaire_de_notes/Etudiants/liste.html', {'etudiants': etudiants})

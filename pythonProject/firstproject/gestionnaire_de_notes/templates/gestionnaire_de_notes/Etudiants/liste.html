@@ -29,6 +29,7 @@
                     <td>
                         <a href="{% url 'etudiant_update' etudiant.pk %}">Modifier</a>
                         <a href="{% url 'etudiant_delete' etudiant.pk %}">Supprimer</a>
+                        <a href="{% url 'generate_report_txt' etudiant.pk %}">Télécharger le relevé de notes</a>
                     </td>
                 </tr>
             {% endfor %}
