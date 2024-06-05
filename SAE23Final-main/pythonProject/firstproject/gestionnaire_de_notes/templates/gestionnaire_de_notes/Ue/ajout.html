@@ -1,0 +1,12 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Ajouter une UE{% endblock %}
+
+{% block content %}
+    <h2>Ajouter une UE</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock %}

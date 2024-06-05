@@ -1,0 +1,13 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Supprimer un Enseignant{% endblock %}
+
+{% block content %}
+    <h2>Supprimer un Enseignant</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Êtes-vous sûr de vouloir supprimer l'enseignant {{ enseignant.nom }} {{ enseignant.prenom }} ?</p>
+        <button type="submit">Supprimer</button>
+        <a href="{% url 'enseignant_list' %}">Annuler</a>
+    </form>
+{% endblock %}
