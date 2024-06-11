@@ -1,0 +1,33 @@
+{% extends 'gestionnaire_de_notes/main.html' %}
+
+{% block title %}Liste des UEs{% endblock %}
+
+{% block content %}
+    <h2>Liste des UEs</h2>
+    <a href="{% url 'ue_create' %}">Ajouter une UE</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Nom</th>
+                <th>Semestre</th>
+                <th>Crédit ECTS</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ue in ues %}
+                <tr>
+                    <td>{{ ue.code }}</td>
+                    <td>{{ ue.nom }}</td>
+                    <td>{{ ue.semestre }}</td>
+                    <td>{{ ue.credit_ects }}</td>
+                    <td>
+                        <a href="{% url 'ue_update' ue.pk %}">Modifier</a>
+                        <a href="{% url 'ue_delete' ue.pk %}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
