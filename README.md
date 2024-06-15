@@ -100,27 +100,33 @@ CREATE TABLE Note (
 
 Script SQL d'Insertion de Données
 
--- Insérer des étudiants
+-- Insérer des étudiants:
+
 INSERT INTO Etudiant (nom, prenom, groupe, photo, email) VALUES
 ('Chouffai', 'Omar', 'RT11', 'chemin/de/photo1.jpg', 'omar.chouffai@uha.fr') ;
 
--- Insérer des unités d'enseignement (UE)
+-- Insérer des unités d'enseignement (UE):
+
 INSERT INTO UE (code, nom, semestre, credit_ects) VALUES
 ('UE102', 'Informatique', '125, 6);
 
--- Insérer des ressources
+-- Insérer des ressources:
+
 INSERT INTO Ressource (code, nom, descriptif, coefficient, ue_code) VALUES
 ('R102', 'Cours d\'Informatique', 'Descriptif du cours d\'informatique', 1.0, 'UE102');
 
--- Insérer des enseignants
+-- Insérer des enseignants:
+
 INSERT INTO Enseignant (nom, prenom) VALUES
 ('Albert, 'Arnauld');
 
--- Insérer des examens
+-- Insérer des examens:
+
 INSERT INTO Examen (titre, date, coefficient, ue_code) VALUES
 ('Examen d\'Informatique', '2024-06-02', 1.0, 'UE102');
 
--- Insérer des notes
+-- Insérer des notes:
+
 INSERT INTO Note (examen_id, etudiant_numero, note, appreciation) VALUES
 (2, 2, 14.0, 'Bien');
 
