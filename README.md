@@ -43,13 +43,14 @@ Schéma Relationnel
 
 
 Script SQL de Création des Tables
+
 CREATE TABLE Etudiant (
     numero_etudiant INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     prenom VARCHAR(100) NOT NULL,
     groupe VARCHAR(50),
     photo VARCHAR(255),
-    email VARCHAR(100) NOT NULL UNIQUE
+    email VARCHAR(100) NOT NULL UNIQUE 
 );
 
 CREATE TABLE UE (
